@@ -8,14 +8,6 @@ export default class HogTile extends Component{
     }
   }
 
-  //
-  // createPaths(){
-  //   const reqSvgs = require.context ( '../hog-imgs', true, /\.svg$/ )
-  //   const paths = reqSvgs.keys ()
-  //
-  //   const svgs = paths.map( path => reqSvgs ( path ) )
-  //   return svgs
-  // }
 
   displayDetails(props){
     return <div>
@@ -27,7 +19,7 @@ export default class HogTile extends Component{
        {this.props.greased ? 'All greased up' : 'Needs some grease'}
       </li>
       <li>
-       Weight as ratio: {this.props['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']}
+       Weight as ratio: {this.props.weight}
       </li>
       <li>
         Highest medal achieved: {this.props['highest medal achieved']}
@@ -36,14 +28,21 @@ export default class HogTile extends Component{
     </div>
   }
 
+  handleDetailsClick = () => {
+    this.setState(prevState => ({
+      showDetails: !prevState.showDetails
+    }))
+  }
+
   render(){
     return(
       <div>
         <img src={this.props.imgSrc} />
         <br></br>
         {this.props.name}
-        <button onClick={(event) => this.setState({showDetails: true})}>View Details</button>
-        {this.state.showDetails ? this.displayDetails(this.props) : null}
+        <br></br>
+        <button onClick={this.handleDetailsClick}>{this.state.showDetails ? "Hide Details" : "View Details"}</button>
+        {this.state.showDetails && this.displayDetails(this.props)}
         <br></br>
         <br></br>
       </div>
