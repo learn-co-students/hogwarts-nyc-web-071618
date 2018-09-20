@@ -107,6 +107,7 @@ export default class HogContainer extends Component{
           <button onClick={this.changeSortByWeight}>{this.state.sortByWeight ? "Unsort by Weight" : "Sort by Weight"}</button>
           <button onClick={this.changeGreased}>{this.state.showGreased ? "Show All Pigs" : "Show Greased Pigs"}</button>
         </div>
+        <br></br>
         <div className="ui grid container">
           {this.state.sortByName ? this.renderSortedAndCheckGreased() : this.renderUnsortedAndCheckGreased()}
         </div>

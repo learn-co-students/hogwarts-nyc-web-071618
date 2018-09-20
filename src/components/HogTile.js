@@ -4,7 +4,8 @@ export default class HogTile extends Component{
   constructor(props){
     super(props)
     this.state = {
-      showDetails: false
+      showDetails: false,
+      hidden: false
     }
   }
 
@@ -34,17 +35,31 @@ export default class HogTile extends Component{
     }))
   }
 
+  handleHideClick = () => {
+    this.setState(prevState => ({
+      hidden: !prevState.hidden
+    }))
+  }
+
+  renderNonHiddenCard(){
+      return(<div>
+              <img src={this.props.imgSrc} />
+                <br></br>
+              {this.props.name}
+                <br></br>
+              <button onClick={this.handleDetailsClick}>{this.state.showDetails ? "Hide Details" : "View Details"}</button>
+                <br></br>
+              {this.state.showDetails && this.displayDetails(this.props)}
+            </div>)
+  }
+
   render(){
     return(
-      <div className="pigTile">
-        <img src={this.props.imgSrc} />
-        <br></br>
-        {this.props.name}
-        <br></br>
-        <button onClick={this.handleDetailsClick}>{this.state.showDetails ? "Hide Details" : "View Details"}</button>
-        {this.state.showDetails && this.displayDetails(this.props)}
-        <br></br>
-        <br></br>
+      <div className="ui eight wide column">
+        <div className="pigTile">
+          <button onClick={this.handleHideClick}>{this.state.hidden ? "Show Hog" : "Hide Hog"}</button>
+          {!this.state.hidden && this.renderNonHiddenCard()}
+        </div>
       </div>
     )
   }
