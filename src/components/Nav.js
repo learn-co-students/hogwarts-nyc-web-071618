@@ -1,7 +1,8 @@
 import piggy from '../porco.png'
 import React from 'react'
 
-const Nav = () => {
+const Nav = (props) => {
+	console.log(props.sortGreased)
 	return (
 		<div className="navWrapper">
 			<span className="headerText">Hogwarts</span>
@@ -11,6 +12,9 @@ const Nav = () => {
 				</a>
 			</div>
 			<span className="normalText">A React App for County Fair Hog Fans</span>
+			<button onClick={props.sortName}>Sort by Name</button>
+			<button onClick={props.sortWeight}>Sort by Weight</button>
+			Filter by Greased<input type="checkbox" onChange={props.sortGreased}></input>
 		</div>
 	)
 }
