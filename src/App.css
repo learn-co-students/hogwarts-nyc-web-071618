@@ -64,7 +64,7 @@ ul {
 
 .subtleText {
   color: #D1D1D1;
-  font-size: .75em; 
+  font-size: .75em;
 }
 
 
@@ -119,6 +119,7 @@ ul {
 
 .pigTile:hover {
   transform: scale(1.05);
+  background: pink;
 }
 
 
@@ -131,6 +132,12 @@ ul {
 .footer {
   padding: 1%;
   clear: both;
+}
+
+.clickybutton {
+  padding: 5px;
+  margin: 20px;
+  background: pink;
 }
 
 
