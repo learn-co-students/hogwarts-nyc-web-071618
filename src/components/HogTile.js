@@ -36,7 +36,7 @@ export default class HogTile extends Component{
 
   render(){
     return(
-      <div>
+      <div className="pigTile">
         <img src={this.props.imgSrc} />
         <br></br>
         {this.props.name}
