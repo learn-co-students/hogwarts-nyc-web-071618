@@ -15,41 +15,44 @@ class Container extends Component {
 
   sortedByName = () => {
     const sorted = this.state.displayedHogs.sort((a, b) => {
-    var nameA = a.name.toUpperCase();
-    var nameB = b.name.toUpperCase();
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
+      var nameA = a.name.toUpperCase();
+      var nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
     });
     this.setState({
+      hogs: hogs,
       displayedHogs: sorted
     })
   }
 
   sortedByWeight = () => {
-    const sorted = this.state.displayedHogs.sort((a, b) => {
-    var nameA = a['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']; // ignore upper and lowercase
-    var nameB = b['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']; // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
+    const sorted = this.state.hogs.sort((a, b) => {
+      var nameA = a['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water'];
+      var nameB = b['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water'];
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
     });
     this.setState({
+      hogs: hogs,
       displayedHogs: sorted
     })
   }
 
   sortedByGreased = () => {
-    const sorted = this.state.displayedHogs.filter(hog => { return hog.greased })
+    const sorted = this.state.hogs.filter(hog => { return hog.greased })
     this.setState({
+      hogs: hogs,
       displayedHogs: sorted
     })
   }
@@ -61,7 +64,7 @@ class Container extends Component {
         <button onClick={this.sortedByName}>Sort By Name</button>
         <button onClick={this.sortedByWeight}>Sort By Weight</button>
         <button onClick={this.sortedByGreased}>Sort By If Greased</button>
-        < Hoglist hogs={hogs}/>
+        < Hoglist hogs={this.state.displayedHogs}/>
       </div>
     )
   }
