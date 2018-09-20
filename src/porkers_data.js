@@ -49,7 +49,7 @@ const hogs = [
     'highest medal achieved': 'wood'
   },
   {
-    name: 'TruffleShuffle',
+    name: 'Truffleshuffle',
     specialty: 'Finding truffles',
     greased: true,
     'weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water': 4.0,
